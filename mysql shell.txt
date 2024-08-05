@@ -1,3 +1,62 @@
 \connect alunods@localhost:3306
 senai@604
 \sql
+OBS: é obrigatorio o uso do ; no final de cada comando
+---------------------------------criando uma database----------------------------------------------------------
+create database (nome);
+show databases;
+use (nome da database);
+-----------------------------------(dentro da database) criando uma tabela-------------------------------------
+create table pizza(
+   codigo int,
+   nome varchar(255),
+   valor decimal(5,2)
+);
+show tables;
+-----------------------------------alterando uma tabela-----------------------------------------------------
+alter table pizza
+   add ingredientes varchar(255) default "Massa,molho e queijo";
+desc pizza;
+alter table pizza
+   add tamanho varchar(30) not null;
+------------------------------------------------------------------------------------------------------------
+
+not null = requer a adição de alguma informação dentro dela
+
+----------------------apagando uma coluna da tabela--------------------------------------------------------
+
+alter table pizza drop tamanho;
+
+-------------------criação de tabela(exemplo completo)-----------------------------------------------------
+alter table pizza
+   add tamanho varchar(6) default "broto"
+   check (tamanho in ("broto","media","grande")) not null;
+
+----------------------------Alterar uma coluna(atributo)já existente--------------------------------------
+
+alter table pizza add unique (nome);          -> (deixando a coluna unica)
+
+alter table pizza modify column nome varchar(255) not null;     -> (deixando a coluna nome, não podendo ser nulo)
+
+alter table pizza add primary key(codigo);     -> (deixando a coluna primaria)
+
+alter table pizza modify column codigo int auto_increment;
+
+
+---------------------------------------Chave estrangeira(exemplo)---------------------------------
+
+create table clientes(
+   idcliente int primary key auto_increment,
+   nome varchar(255) not null,
+   email varchar(255) unique not null
+);
+
+
+create table pedidos(
+   idpedido int primary key auto_increment,
+   produto varchar(50) not null,
+   quantidade int not null,
+   fkidcliente int not null,
+   foreign key(fkidcliente) references clientes(idcliente)
+);
+
