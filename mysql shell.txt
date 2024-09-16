@@ -13,6 +13,7 @@ create table pizza(
    valor decimal(5,2)
 );
 show tables;
+
 -----------------------------------alterando uma tabela-----------------------------------------------------
 alter table pizza
    add ingredientes varchar(255) default "Massa,molho e queijo";
@@ -59,4 +60,75 @@ create table pedidos(
    fkidcliente int not null,
    foreign key(fkidcliente) references clientes(idcliente)
 );
+-------------------------------------------------------Atividade16-09----------------------------------------------------
+create table usuario(
+   id_usuario int auto_increment primary key,
+   nome varchar(100) not null,
+   email varchar(100) not null unique,
+   senha varchar(50) not null,
+   telefone char(11) not null
+);
+----------------------------------------
+create table compra(
+   id_compra int auto_increment primary key,
+   data_compra datatime,
+   foreign key(fk_idcliente) references clientes(id_cliente)
+);
+----------------------------------------
+create table organizador(
+   id_organizador int auto_increment primary key,
+   nome varchar(100) not null,
+   email varchar(100) not null unique,
+   senha varchar(50) not null,
+   telefone char(11) not null
+);
+-------------------------------------povoando a tabela usuario-------------------------------------------------------------
+insert into usuario (nome, email, senha, telefone)
+   value ("Pedro Bonini", "pedrob@email.com", "senha1234", "16123456789");
+
+-------------------------------------povoando a tabela usuario(com id)-------------------------------------------------------------
+insert into usuario (id_usuario, nome, email, senha, telefone)
+   value (50,"Maria Luisa", "ml@email.com", "senha1234", "169999991111");
+
+-------------------------------------segundo registro sem o id-------------------------------------------------------------
+insert into usuario (nome, email, senha, telefone)
+   value ("Mateus Cubeiro", "mc@email.com", "senha1234", "16991071612");
+
+
+UPDATE usuario
+SET nome = "Maria Luisa",
+    email = "ml@email.com",
+    senha = "senha1234",
+    telefone = "16999991111";
+WHERE id_usuario = 50;
+
+-------------------------------------selecionar apenas algumas colunas da tabela--------------------------------------------
+select email, nome from usuario;
+select * from usuario;         --selecionar todas as colunas
+
+--------------------------------------apelido aos atributos--------------------------------
+select id_usuario as codigo, telefone as celular,
+   nome from usuario;
+
+--------------------------------select flexivel
+select 10+10, 10-10, 10*10, 10/10;
+
+select 10+10 as adição, 10/10 as divisão, 10*10 as multiplicação,10-10 subtração;
+
+select id_usuario * 10 as "id x 10",
+    nome from usuario;
+
+-----------------------------------------------
+
+insert into usuario (id_usuario, nome, email, senha, telefone)
+    values (2,"Vini Fog","fog@email.com","senha123","16123456789"),
+    (3,"Maju","mj@email.com","senha123","16888888888"),
+    (4,"M Clara","mclara@email.com","senha123","16999999999"),
+    (5,"Livia","lv@email.com","senha123","16999998888"),
+    (6,"J Alexandre","ja@email.com","senha123","16888889999"),
+    (7,"Guifofo","fofo@email.com","senha123","16999997777"),
+    (8,"Clara da silva","clara@email.com","senha123","16999996666"),
+    (9,"Leonardo Pedroso","lp@email.com","senha123","16888886666"),
+    (10,"Gusta Prior","prior@email.com","senha123","16999993333"),
+    (11,"Pedro Paulo","pp@email.com","senha123","16888881111"),
 
