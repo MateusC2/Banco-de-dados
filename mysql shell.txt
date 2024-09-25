@@ -2,6 +2,10 @@
 senai@604
 \sql
 OBS: é obrigatorio o uso do ; no final de cada comando
+
+and = &&
+or = ||
+not null = !
 ---------------------------------criando uma database----------------------------------------------------------
 create database (nome);
 show databases;
@@ -138,4 +142,8 @@ select * from usuario where id_usuario > 3;
 select * from usuario where id_usuario = 3;
 
 select id_usuario, nome from usuario where id_usuario != 10 and id_usuario > 5;
+
+select * from usuario where id_usuario < 4 or id_usuario > 4
+
+select id_usuario,nome from usuario where not(id_usuario < 5 or id_usario > 5);		
 
