@@ -132,3 +132,10 @@ insert into usuario (id_usuario, nome, email, senha, telefone)
     (10,"Gusta Prior","prior@email.com","senha123","16999993333"),
     (11,"Pedro Paulo","pp@email.com","senha123","16888881111"),
 
+----------------------(selecionando apenas alguns elementos da tabela)---------------------------------
+select * from usuario where id_usuario > 3;
+
+select * from usuario where id_usuario = 3;
+
+select id_usuario, nome from usuario where id_usuario != 10 and id_usuario > 5;
+
