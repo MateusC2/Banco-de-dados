@@ -38,7 +38,7 @@ create table evento (
 create table ingresso(
 	id_ingresso int auto_increment primary key,
 	preco decimal(5,2) not null,
-	tipo varchar(10) not null unique,
+	tipo varchar(10) not null,
 	fk_idevento int not null,
         foreign key(fk_idevento) references evento(id_evento)
 );
@@ -87,7 +87,7 @@ insert into usuario (nome, email, senha, telefone,data_nascimento) values
 	('Rodrigo Gomes', 'rodrigo.gomes@example.com', 'senha123', '16963741852', '1987-06-30'),
 	('Mariana Batista', 'mariana.batista@example.com', 'senha123', '16147258369', '1998-09-22'),
 	('Fábio Freitas', 'fabio.freitas@example.com', 'senha123', '16369147258', '1994-04-16'),
-	('Isabela Cardoso', 'isabela.cardoso@example.com', 'senha123', '16258369147', '1985-11-08'),	
+	('Isabela Cardoso', 'isabela.cardoso@example.com', 'senha123', '16258369147', '1985-11-08');	
 
 
 
@@ -109,3 +109,40 @@ insert into ingresso(preco,tipo,fk_idevento) values
 	("200","pista","2"),
 	("600","VIP","3"),
 	("250","pista","3");
+
+update ingresso set preco = preco * 1.10 where fk_idevento = 3;
+
+delete from ingresso
+	where fk_idevento = 2;
+
+select * from usuario 
+	where data_nascimento >= '1990-01-01' and data_nascimento <= '1995-12-31'
+	order by data_nascimento;
+
+update organizador 
+	set telefone = '16999990000'
+	where email like = '%xyz.com';
+
+select nome, data_hora from evento where fk_idorganizador = '3';
+
+insert into compra (data_compra,fk_idusuario) values
+	("2024-10-31", "1"),
+	("2024-10-31", "2"),
+	("2024-10-31", "3"),
+	("2024-10-31", "4"),
+	("2024-10-31", "5");
+
+insert into ingresso_compra(quantidade,fk_idingresso,fk_idcompra) values
+	('50','1','1'),
+	('24','2','2'),
+	('34','4','3'),
+	('12','5','4');
+
+insert into presença (data_hora_checkin,fk_idevento,fk_idcompra)values
+	("2024-10-31 19:00:00", "3","1"),
+	("2024-10-31 13:00:00", "3","2"),
+	("2024-10-31 12:00:00", "3","3"),
+	("2024-10-31 14:00:00", "3","4");
+
+
+

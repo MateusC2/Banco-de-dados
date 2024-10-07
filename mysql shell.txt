@@ -99,12 +99,7 @@ insert into usuario (nome, email, senha, telefone)
    value ("Mateus Cubeiro", "mc@email.com", "senha1234", "16991071612");
 
 
-UPDATE usuario
-SET nome = "Maria Luisa",
-    email = "ml@email.com",
-    senha = "senha1234",
-    telefone = "16999991111";
-WHERE id_usuario = 50;
+	
 
 -------------------------------------selecionar apenas algumas colunas da tabela--------------------------------------------
 select email, nome from usuario;
